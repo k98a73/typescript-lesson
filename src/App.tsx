@@ -173,7 +173,7 @@ const App: React.FC = () => {
   return (
     <div className="App">
       <header className="App-header">
-        <TestComponent text="hello from App" />
+        <TestComponent text="hello" />
       </header>
     </div>
   );
