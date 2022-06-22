@@ -121,6 +121,48 @@ let funcComp2 = (x: string) => {};
 // funcComp2 = funcComp1;
 // 異なる型の関数を代入すると、エラーになる
 
+// Generics
+interface GEN<T> {
+  item: T;
+}
+const gen0: GEN<string> = { item: "hello" };
+// const gen1: GEN = {item: "hello"}; /* 型の引数を指定していないので、エラーになる */
+const gen2: GEN<number> = { item: 12 };
+
+interface GEN1<T = string> {
+  item: T;
+}
+const gen3: GEN1 = { item: "hello" };
+
+interface GEN2<T extends string | number> {
+  item: T;
+}
+// const gen4: GEN2<boolean> = {item: true}; /* 型の制約を満たしていない */
+
+function funcGen<T>(props: T) {
+  return { item: props };
+}
+const gen6 = funcGen<string>("test"); // <string>は無くても良い
+const gen7 = funcGen<string | null>(null);
+
+function funcGen1<T extends string | null>(props: T) {
+  return { value: props };
+}
+const gen8 = funcGen1("hello");
+// const gen9 = funcGen1(123); /* stringかnullしか受け付けない */
+
+interface Props {
+  price: number;
+}
+function funcGen3<T extends Props>(props: T) {
+  return { value: props.price };
+}
+const gen10 = funcGen3({ price: 10 });
+
+const funcGen4 = <T extends Props>(props: T) => {
+  return { value: props.price };
+};
+
 function App() {
   return (
     <div className="App">
