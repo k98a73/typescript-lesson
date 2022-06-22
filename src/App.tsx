@@ -106,6 +106,21 @@ const PC2: PC = {
   OSType: OS.Mac,
 };
 
+// 型の互換性
+const comp1 = "test";
+let comp2: string = comp1;
+
+let comp3: string = "test";
+// let comp4: "test" = comp3;
+//抽象度が高いcomp3を抽象度が低いcomp4に代入すると、エラーになる
+
+let funcComp1 = (x: number) => {};
+let funcComp2 = (x: string) => {};
+
+// funcComp1 = funcComp2;
+// funcComp2 = funcComp1;
+// 異なる型の関数を代入すると、エラーになる
+
 function App() {
   return (
     <div className="App">
