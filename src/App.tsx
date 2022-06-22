@@ -54,7 +54,6 @@ value = 10;
 let arrayUni: (number | string)[];
 arrayUni = [0, 1, 2, "hello"];
 
-
 // Literal Types
 let company: "Facebook" | "Google" | "Amazon";
 company = "Amazon";
@@ -67,15 +66,15 @@ let msg: string = "Hi";
 let msg2: typeof msg;
 msg2 = "hello";
 
-let animal = {cat: "small cat"};
-let newAnimal: typeof animal = {cat: "big cat"};
+let animal = { cat: "small cat" };
+let newAnimal: typeof animal = { cat: "big cat" };
 
 // keyof
 type KEYS = {
   primary: string;
   secondary: string;
 };
-let key: keyof KEYS
+let key: keyof KEYS;
 key = "primary";
 
 // typeof + keyof
@@ -86,6 +85,26 @@ const SPORTS = {
 
 let keySports: keyof typeof SPORTS;
 keySports = "soccer";
+
+// enum (列挙型)
+enum OS {
+  Windows,
+  Mac,
+  Linux,
+}
+interface PC {
+  id: number;
+  OSType: OS;
+}
+const PC1: PC = {
+  id: 1,
+  OSType: OS.Windows,
+};
+
+const PC2: PC = {
+  id: 2,
+  OSType: OS.Mac,
+};
 
 function App() {
   return (
