@@ -3,6 +3,11 @@ import React from "react";
 
 import "./App.css";
 
+// JSON型推論（ここから）
+import Data from "./data.json";
+type USERS = typeof Data;
+// JSON型推論（ここまで）
+
 const name = "hello";
 
 let nameChange = "hello";
